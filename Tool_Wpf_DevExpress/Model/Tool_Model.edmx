@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ToolsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Tools">
+          <Key>
+            <PropertyRef Name="IdTool" />
+          </Key>
+          <Property Name="IdTool" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BoschCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="100" />
+          <Property Name="PrimarySupplier" Type="varchar" MaxLength="50" />
+          <Property Name="SecondarySupplier" Type="varchar" MaxLength="50" />
+          <Property Name="PrimarySharpener" Type="varchar" MaxLength="50" />
+          <Property Name="SecondarySharpener" Type="varchar" MaxLength="50" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="TurretCode" Type="varchar" MaxLength="50" />
+          <Property Name="PresettingQuoteNGEM1" Type="varchar" MaxLength="50" />
+          <Property Name="PresettingQuoteNGEM2" Type="varchar" MaxLength="50" />
+          <Property Name="PresettingDiameter" Type="varchar" MaxLength="50" />
+          <Property Name="Presetting" Type="varchar" MaxLength="1" />
+          <Property Name="Life" Type="int" />
+          <Property Name="SProposal" Type="varchar" MaxLength="50" />
+          <Property Name="FProposal" Type="varchar" MaxLength="50" />
+          <Property Name="SValue" Type="varchar" MaxLength="50" />
+          <Property Name="FValue" Type="varchar" MaxLength="50" />
+          <Property Name="Refrigeration" Type="varchar" MaxLength="50" />
+          <Property Name="Accessories" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK_MachinesTools_Tools">
+          <End Role="Tools" Type="Self.Tools" Multiplicity="1" />
+          <End Role="Tools1" Type="Self.Tools" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Tools">
+              <PropertyRef Name="IdTool" />
+            </Principal>
+            <Dependent Role="Tools1">
+              <PropertyRef Name="IdTool" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ToolsModelStoreContainer">
+          <EntitySet Name="Tools" EntityType="Self.Tools" Schema="Config" store:Type="Tables" />
+          <AssociationSet Name="FK_MachinesTools_Tools" Association="Self.FK_MachinesTools_Tools">
+            <End Role="Tools" EntitySet="Tools" />
+            <End Role="Tools1" EntitySet="Tools" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ToolsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Tools">
+          <Key>
+            <PropertyRef Name="IdTool" />
+          </Key>
+          <Property Name="IdTool" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BoschCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PrimarySupplier" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SecondarySupplier" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PrimarySharpener" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SecondarySharpener" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="TurretCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PresettingQuoteNGEM1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PresettingQuoteNGEM2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PresettingDiameter" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Presetting" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Life" Type="Int32" />
+          <Property Name="SProposal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FProposal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SValue" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FValue" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Refrigeration" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Accessories" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Tools1" Relationship="Self.FK_MachinesTools_Tools" FromRole="Tools" ToRole="Tools1" />
+          <NavigationProperty Name="Tools2" Relationship="Self.FK_MachinesTools_Tools" FromRole="Tools1" ToRole="Tools" />
+        </EntityType>
+        <Association Name="FK_MachinesTools_Tools">
+          <End Role="Tools" Type="Self.Tools" Multiplicity="1" />
+          <End Role="Tools1" Type="Self.Tools" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Tools">
+              <PropertyRef Name="IdTool" />
+            </Principal>
+            <Dependent Role="Tools1">
+              <PropertyRef Name="IdTool" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ToolsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Tools" EntityType="Self.Tools" />
+          <AssociationSet Name="FK_MachinesTools_Tools" Association="Self.FK_MachinesTools_Tools">
+            <End Role="Tools" EntitySet="Tools" />
+            <End Role="Tools1" EntitySet="Tools" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ToolsModelStoreContainer" CdmEntityContainer="ToolsEntities">
+          <EntitySetMapping Name="Tools">
+            <EntityTypeMapping TypeName="ToolsModel.Tools">
+              <MappingFragment StoreEntitySet="Tools">
+                <ScalarProperty Name="IdTool" ColumnName="IdTool" />
+                <ScalarProperty Name="BoschCode" ColumnName="BoschCode" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="PrimarySupplier" ColumnName="PrimarySupplier" />
+                <ScalarProperty Name="SecondarySupplier" ColumnName="SecondarySupplier" />
+                <ScalarProperty Name="PrimarySharpener" ColumnName="PrimarySharpener" />
+                <ScalarProperty Name="SecondarySharpener" ColumnName="SecondarySharpener" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="TurretCode" ColumnName="TurretCode" />
+                <ScalarProperty Name="PresettingQuoteNGEM1" ColumnName="PresettingQuoteNGEM1" />
+                <ScalarProperty Name="PresettingQuoteNGEM2" ColumnName="PresettingQuoteNGEM2" />
+                <ScalarProperty Name="PresettingDiameter" ColumnName="PresettingDiameter" />
+                <ScalarProperty Name="Presetting" ColumnName="Presetting" />
+                <ScalarProperty Name="Life" ColumnName="Life" />
+                <ScalarProperty Name="SProposal" ColumnName="SProposal" />
+                <ScalarProperty Name="FProposal" ColumnName="FProposal" />
+                <ScalarProperty Name="SValue" ColumnName="SValue" />
+                <ScalarProperty Name="FValue" ColumnName="FValue" />
+                <ScalarProperty Name="Refrigeration" ColumnName="Refrigeration" />
+                <ScalarProperty Name="Accessories" ColumnName="Accessories" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

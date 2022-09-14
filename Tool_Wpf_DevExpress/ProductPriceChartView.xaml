@@ -1,0 +1,38 @@
+﻿<dx:ThemedWindow
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    xmlns:Model="clr-namespace:Tool_Wpf_DevExpress.Model" 
+    xmlns:ViewModel="clr-namespace:Tool_Wpf_DevExpress.ViewModel" 
+    xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/charts"
+    xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+    x:Class="Tool_Wpf_DevExpress.View.ProductPriceChartView"
+    Title="ProductPriceChart" Height="350" Width="525"
+    >
+    <dx:ThemedWindow.Resources>
+        <dx:EntitySimpleDataSource x:Key="EntitySimpleDataSource" ContextType="{x:Type Model:CostoGiornalieroEncodedEquipmentEntities}" Path="CostoGiornalieroEncodedEquipment">
+            <dx:DesignDataManager.DesignData>
+                <dx:DesignDataSettings RowCount="5"/>
+            </dx:DesignDataManager.DesignData>
+        </dx:EntitySimpleDataSource>
+        <dx:EntitySimpleDataSource x:Key="EntitySimpleDataSource1" ContextType="{x:Type Model:CostoGiornalieroEncodedEquipmentEntities}" Path="CostoGiornalieroEncodedEquipment">
+            <dx:DesignDataManager.DesignData>
+                <dx:DesignDataSettings RowCount="5"/>
+            </dx:DesignDataManager.DesignData>
+        </dx:EntitySimpleDataSource>
+    </dx:ThemedWindow.Resources>
+    <dx:ThemedWindow.DataContext>
+        <ViewModel:ProductPriceChartViewModel/>
+    </dx:ThemedWindow.DataContext>
+
+    <Grid>
+        <dxc:ChartControl DataSource="{Binding CostoGiornalieroEncodedEquipments}">
+            <dxc:ChartControl.Legends>
+                <dxc:Legend/>
+            </dxc:ChartControl.Legends>
+            <dxc:XYDiagram2D>
+                <dxc:BarSideBySideSeries2D DisplayName="Series 1" ArgumentDataMember="CheckDate" ValueDataMember="DailyProducedPcs"/>
+            </dxc:XYDiagram2D>
+        </dxc:ChartControl>
+    </Grid>
+</dx:ThemedWindow>
